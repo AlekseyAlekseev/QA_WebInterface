@@ -2,6 +2,7 @@ package ru.netology.web;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -9,9 +10,13 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class ValidationCheckTest {
 
+    @BeforeEach
+    public void openUrl() {
+        open("http://localhost:9999/");
+    }
+
     @Test
     public void shouldEmptyFieldName() {
-        open("http://localhost:9999/");
         SelenideElement form = $("form");
         form.$("button").click();
         $("[data-test-id=name] span.input__sub").shouldHave(Condition.exactText(
@@ -21,7 +26,6 @@ public class ValidationCheckTest {
 
     @Test
     public void shouldInvalidName() {
-        open("http://localhost:9999/");
         SelenideElement form = $("form");
         form.$("[data-test-id=name] input").setValue("Aleksey Alekseev");
         form.$("button").click();
@@ -33,7 +37,6 @@ public class ValidationCheckTest {
 
     @Test
     public void shouldEmptyFieldPhone() {
-        open("http://localhost:9999/");
         SelenideElement form = $("form");
         form.$("[data-test-id=name] input").setValue("Алексей");
         form.$("button").click();
@@ -42,7 +45,6 @@ public class ValidationCheckTest {
 
     @Test
     public void shouldInvalidPhone() {
-        open("http://localhost:9999/");
         SelenideElement form = $("form");
         form.$("[data-test-id=name] input").setValue("Алексей");
         form.$("[data-test-id=phone] input").setValue("Аааа");
@@ -54,7 +56,6 @@ public class ValidationCheckTest {
 
     @Test
     public void shouldCheckboxNotSet() {
-        open("http://localhost:9999/");
         SelenideElement form = $("form");
         form.$("[data-test-id=name] input").setValue("Алексей");
         form.$("[data-test-id=phone] input").setValue("+79012345678");
