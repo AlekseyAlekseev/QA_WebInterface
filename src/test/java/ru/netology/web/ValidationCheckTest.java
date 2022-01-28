@@ -38,7 +38,7 @@ public class ValidationCheckTest {
     @Test
     public void shouldEmptyFieldPhone() {
         SelenideElement form = $("form");
-        form.$("[data-test-id=name] input").setValue("Алексей");
+        form.$("[data-test-id=name] input").setValue("Епифа-нов Алексей");
         form.$("button").click();
         $("[data-test-id=phone] span.input__sub").shouldHave(Condition.exactText("Поле обязательно для заполнения"));
     }
@@ -46,7 +46,7 @@ public class ValidationCheckTest {
     @Test
     public void shouldInvalidPhone() {
         SelenideElement form = $("form");
-        form.$("[data-test-id=name] input").setValue("Алексей");
+        form.$("[data-test-id=name] input").setValue("Епифа-нов Алексей");
         form.$("[data-test-id=phone] input").setValue("Аааа");
         form.$("button").click();
         $("[data-test-id=phone] span.input__sub").shouldHave(Condition.exactText(
@@ -57,7 +57,7 @@ public class ValidationCheckTest {
     @Test
     public void shouldCheckboxNotSet() {
         SelenideElement form = $("form");
-        form.$("[data-test-id=name] input").setValue("Алексей");
+        form.$("[data-test-id=name] input").setValue("Епифа-нов Алексей");
         form.$("[data-test-id=phone] input").setValue("+79012345678");
         form.$("button").click();
         $("[data-test-id=agreement]").shouldHave(Condition.attribute("class",

@@ -13,7 +13,7 @@ public class CardOrderTest {
     public void shouldSubmitCardOrder() {
         open("http://localhost:9999/");
         SelenideElement form = $("form");
-        form.$("[data-test-id=name] input").setValue("Алексей");
+        form.$("[data-test-id=name] input").setValue("Епифа-нов Алексей");
         form.$("[data-test-id=phone] input").setValue("+79999999999");
         form.$("[data-test-id=agreement] span").click();
         form.$("button").click();
